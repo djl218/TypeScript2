@@ -1,4 +1,4 @@
-import { NewPatient, Gender } from './types';
+import { NewPatient, Gender, Entry } from './types';
 
 const isString = (text: any): text is string => {
   return typeof text === 'string' || text instanceof String;
@@ -48,13 +48,25 @@ const parseOccupation = (occupation: any): string => {
   return occupation;
 };
 
+const isArray = (param: any): param is Entry => {
+  return param instanceof Array;
+};
+
+const parseEntries = (entries: any): Entry[] => {
+  if (!entries || !isArray(entries)) {
+    throw new Error('Incorrect or missing comment: ' + entries);
+  }
+  return entries as Entry[];
+}
+
 const toNewPatient = (object: any): NewPatient => {
   return {
     name: parseName(object.name),
     dateOfBirth: parseDateOfBirth(object.dateOfBirth),
     ssn: parseSSN(object.ssn),
     gender: parseGender(object.gender),
-    occupation: (parseOccupation(object.occupation))
+    occupation: parseOccupation(object.occupation),
+    entries: parseEntries(object.entries)
   };
 };
 
