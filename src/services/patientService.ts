@@ -31,7 +31,7 @@ const findById = (id: string): Patient | undefined => {
   const patient = patients.find(patient => patient.id === id);
 
   return patient;
-}
+};
 
 export default {
   getPatients,
