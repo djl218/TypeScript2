@@ -48,12 +48,15 @@ const parseOccupation = (occupation: any): string => {
   return occupation;
 };
 
-const isArray = (param: any): param is Entry => {
-  return param instanceof Array;
+const isEntry = (param: any): param is Entry => {
+  if (param.type === 'Hospital' || 'OccupationalHealthcare' || 'HealthCheck') {
+    return true;
+  }
+  return false;
 };
 
-const parseEntries = (entries: any): Entry[] => {
-  if (!entries || !isArray(entries)) {
+const parseEntries = (entries: any[]): Entry[] => {
+  if (!entries || !isEntry(entries)) {
     throw new Error('Incorrect or missing comment: ' + entries);
   }
   return entries as Entry[];
