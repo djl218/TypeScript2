@@ -1,6 +1,7 @@
 import { Diagnosis } from "../src/types";
+import toDiagnosis from "../src/utils/diagnosesUtil";
 
-const diagnoses: Array<Diagnosis> = [
+const data = [
   {
     "code": "M24.2",
     "name": "Disorder of ligament",
@@ -79,5 +80,10 @@ const diagnoses: Array<Diagnosis> = [
     "latin": "Alia retinopathia proliferativa"
   }
 ];
+
+const diagnoses: Diagnosis [] = data.map(obj => {
+  const object = toDiagnosis(obj) as Diagnosis;
+  return object;
+});
 
 export default diagnoses;
