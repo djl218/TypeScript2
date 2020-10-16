@@ -11,7 +11,7 @@ const isString = (text: any): text is string => {
 
 const parseDescription = (description: any): string => {
   if (!description || !isString(description)) {
-    throw new Error('Incorrect or missing comment: ' + description);
+    throw new Error('Incorrect or missing description: ' + description);
   }
   return description;
 };
@@ -29,21 +29,21 @@ const parseDate = (date: any): string => {
 
 const parseSpecialist = (specialist: any): string => {
   if (!specialist || !isString(specialist)) {
-    throw new Error('Incorrect or missing comment: ' + specialist);
+    throw new Error('Incorrect or missing specialist: ' + specialist);
   }
   return specialist;
 };
 
 const parseHospitalType = (type: any): "Hospital" => {
   if (type !== "Hospital") {
-    throw new Error('Incorrect or missing comment: ' + type);
+    throw new Error('Incorrect or missing hospital type: ' + type);
   }
   return type;
 };
 
 const parseOccupationalHealthcareType = (type: any): "OccupationalHealthcare" => {
   if (type !==  "OccupationalHealthcare") {
-    throw new Error('Incorrect or missing comment: ' + type);
+    throw new Error('Incorrect or missing occupational healthcare type: ' + type);
   }
   return type;
 };
@@ -51,7 +51,7 @@ const parseOccupationalHealthcareType = (type: any): "OccupationalHealthcare" =>
 
 const parseHealthyCheckType = (type: any): "HealthCheck" => {
   if (type !== "HealthCheck") {
-    throw new Error('Incorrect or missing comment: ' + type);
+    throw new Error('Incorrect or missing healthy check type: ' + type);
   }
   return type;
 };
@@ -59,14 +59,14 @@ const parseHealthyCheckType = (type: any): "HealthCheck" => {
 const parseDischarge = (discharge: any): { date: string, criteria: string } => {
   if (!discharge.date || !isString(discharge.date) || !isDate(discharge.date)
     || !discharge.criteria || !isString(discharge.criteria)) {
-    throw new Error('Incorrect or missing comment: ' + discharge)
+    throw new Error('Incorrect or missing discharge: ' + discharge)
   }
   return discharge;
 };
 
 const parseEmployerName = (employerName: any): string => {
   if (!employerName || !isString(employerName)) {
-    throw new Error('Incorrect or missing comment: ' + employerName);
+    throw new Error('Incorrect or missing employer name: ' + employerName);
   }
   return employerName;
 };
@@ -77,7 +77,7 @@ const isHealthCheckRating = (param: any): param is HealthCheckRating => {
 
 const parseHealthCheckRating = (healthCheckRating: any): HealthCheckRating => {
   if (!healthCheckRating || !isHealthCheckRating(healthCheckRating)) {
-    throw new Error('Incorrect of missing comment: ' + healthCheckRating)
+    throw new Error('Incorrect of missing health check rating: ' + healthCheckRating)
   }
   return healthCheckRating;
 };

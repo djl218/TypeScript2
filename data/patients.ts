@@ -1,5 +1,5 @@
 import { Patient, Gender } from "../src/types";
-import toNewPatient from "../src/utils/patientUtil";
+import { toRenderedPatient } from "../src/utils/patientUtil";
 
 const data = [
     {
@@ -113,8 +113,8 @@ const data = [
     },
 ];
 
-const patients: Patient [] = data.map(obj => {
-    const object = toNewPatient(obj) as Patient;
+const patients: Patient[] = data.map(obj => {
+    const object = toRenderedPatient(obj) as Patient;
     object.id = obj.id;
     return object;
 });

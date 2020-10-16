@@ -1,6 +1,6 @@
 import express from 'express';
 import patientService from '../services/patientService';
-import toNewPatient from '../utils/patientUtil';
+import { toNewPatient } from '../utils/patientUtil';
 import {
   toNewHospitalEntry,
   toNewOccupationalHealthcareEntry,

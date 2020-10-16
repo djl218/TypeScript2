@@ -57,9 +57,12 @@ interface HealthyCheckEntry extends BaseEntry {
   healthCheckRating: HealthCheckRating;
 }
 
-export type PublicPatient = Omit<Patient, 'ssn' | 'entries'>;
+export type PublicPatient = Omit<Patient, 'ssn' >;
 
-export type NewPatient = Omit<Patient, 'id'>;
+export type RenderedPatient = Omit<Patient, 'id'>;
+
+export type NewPatient = Omit<Patient, 'id' | 'entries'>;
+
 
 export type Entry =
   | HospitalEntry

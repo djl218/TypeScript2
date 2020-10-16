@@ -1,4 +1,4 @@
-import { NewPatient, Gender, Entry } from '../types';
+import { NewPatient, RenderedPatient, Gender, Entry } from '../types';
 
 const isString = (text: any): text is string => {
   return typeof text === 'string' || text instanceof String;
@@ -6,7 +6,7 @@ const isString = (text: any): text is string => {
 
 const parseName = (name: any): string => {
   if (!name || !isString(name)) {
-    throw new Error('Incorrect or missing comment: ' + name);
+    throw new Error('Incorrect or missing name: ' + name);
   }
   return name;
 };
@@ -24,7 +24,7 @@ const parseDateOfBirth = (dateOfBirth: any): string => {
 
 const parseSSN = (name: any): string => {
   if (!name || !isString(name)) {
-    throw new Error('Incorrect or missing comment: ' + name);
+    throw new Error('Incorrect or missing ssn: ' + name);
   }
   return name;
 };
@@ -35,33 +35,36 @@ const isGender = (param: any): param is Gender => {
 
 const parseGender = (gender: any): Gender => {
   if (!gender || !isGender(gender)) {
-    throw new Error('Incorrect of missing comment: ' + gender)
+    throw new Error('Incorrect of missing gender: ' + gender)
   }
   return gender;
 };
 
 const parseOccupation = (occupation: any): string => {
   if (!occupation || !isString(occupation)) {
-    throw new Error('Incorrect or missing comment: ' + occupation);
+    throw new Error('Incorrect or missing occupation: ' + occupation);
   }
   return occupation;
 };
 
-const isEntry = (param: any): param is Entry => {
-  if (param.type === 'Hospital' || 'OccupationalHealthcare' || 'HealthCheck') {
-    return true;
-  }
-  return false;
-};
-
 const parseEntries = (entries: any[]): Entry[] => {
-  if (!entries || !isEntry(entries)) {
-    throw new Error('Incorrect or missing comment: ' + entries);
+  if (!(Array.isArray(entries))) {
+    throw new Error('Incorrect or missing entry: ' + entries);
   }
   return entries as Entry[];
 };
 
-const toNewPatient = (object: any): NewPatient => {
+export const toNewPatient = (object: any): NewPatient => {
+  return {
+    name: parseName(object.name),
+    dateOfBirth: parseDateOfBirth(object.dateOfBirth),
+    ssn: parseSSN(object.ssn),
+    gender: parseGender(object.gender),
+    occupation: parseOccupation(object.occupation)
+  };
+};
+
+export const toRenderedPatient = (object: any): RenderedPatient => {
   return {
     name: parseName(object.name),
     dateOfBirth: parseDateOfBirth(object.dateOfBirth),
@@ -71,5 +74,3 @@ const toNewPatient = (object: any): NewPatient => {
     entries: parseEntries(object.entries)
   };
 };
-
-export default toNewPatient;

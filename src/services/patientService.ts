@@ -1,6 +1,5 @@
 import patients from '../../data/patients';
 import { v4 as uuidv4 } from 'uuid';
-
 import {
   Patient,
   PublicPatient,
@@ -15,18 +14,20 @@ const getPatients = (): Array<Patient> => {
 };
 
 const getPublicPatient = (): PublicPatient[] => {
-  return patients.map(({ id, name, dateOfBirth, gender, occupation }) => ({
+  return patients.map(({ id, name, dateOfBirth, gender, occupation, entries }) => ({
     id,
     name,
     dateOfBirth,
     gender,
-    occupation
+    occupation,
+    entries
   }));
 };
 
 const addPatient = (patient: NewPatient): Patient => {
   const newPatientEntry = {
     id: uuidv4(),
+    entries: [],
     ...patient
   };
 
