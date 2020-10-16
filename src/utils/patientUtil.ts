@@ -17,7 +17,7 @@ const isDate = (date: string): boolean => {
 
 const parseDateOfBirth = (dateOfBirth: any): string => {
   if (!dateOfBirth || !isString(dateOfBirth) || !isDate(dateOfBirth)) {
-    throw new Error('Incorrect of missing date: ' + dateOfBirth);
+    throw new Error('Incorrect or missing date: ' + dateOfBirth);
   }
   return dateOfBirth;
 };
@@ -35,7 +35,7 @@ const isGender = (param: any): param is Gender => {
 
 const parseGender = (gender: any): Gender => {
   if (!gender || !isGender(gender)) {
-    throw new Error('Incorrect of missing weather: ' + gender)
+    throw new Error('Incorrect of missing comment: ' + gender)
   }
   return gender;
 };
@@ -59,7 +59,7 @@ const parseEntries = (entries: any[]): Entry[] => {
     throw new Error('Incorrect or missing comment: ' + entries);
   }
   return entries as Entry[];
-}
+};
 
 const toNewPatient = (object: any): NewPatient => {
   return {

@@ -1,0 +1,11 @@
+POST http://localhost:3001/api/patients
+Content-Type: application/json
+
+{
+  "name": "Daniel Leskosky",
+  "dateOfBirth": "1991-04-07",
+  "ssn": "867530-1234",
+  "gender": "male",
+  "occupation": "engineer",
+  "entries": []
+}

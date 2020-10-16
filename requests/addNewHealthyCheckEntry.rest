@@ -1,0 +1,10 @@
+POST http://localhost:3001/api/patients/d2773336-f723-11e9-8f0b-362b9e155667/entries
+Content-Type: application/json
+
+{
+  "description": "Patient was sad.  Now patient is happy.",
+  "date": "2013-02-21",
+  "specialist": "Patch Adams",
+  "type": "HealthCheck",
+  "healthCheckRating": "Healthy"
+}
