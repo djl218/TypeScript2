@@ -64,6 +64,17 @@ const parseDischarge = (discharge: any): { date: string, criteria: string } => {
   return discharge;
 };
 
+const parseSickLeave = (sickLeave: any): { startDate: string, endDate: string } | undefined => {
+  if (sickLeave == undefined) {
+    return sickLeave;
+  }
+  if (!sickLeave.startDate || !isString(sickLeave.startDate) || !isDate(sickLeave.startDate)
+    || !sickLeave.endDate || !isString(sickLeave.endDate || !isDate(sickLeave.endDate))) {
+    throw new Error('Incorrect or missing sickLeave: ' + sickLeave)
+  }
+  return sickLeave;
+};
+
 const parseEmployerName = (employerName: any): string => {
   if (!employerName || !isString(employerName)) {
     throw new Error('Incorrect or missing employer name: ' + employerName);
@@ -99,6 +110,7 @@ export const toNewOccupationalHealthcareEntry = (object: any): NewOccupationalHe
     specialist: parseSpecialist(object.specialist),
     type: parseOccupationalHealthcareType(object.type),
     employerName: parseEmployerName(object.employerName),
+    sickLeave: parseSickLeave(object.sickLeave)
   };
 };
 

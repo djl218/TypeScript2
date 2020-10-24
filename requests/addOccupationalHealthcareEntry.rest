@@ -6,5 +6,9 @@ Content-Type: application/json
   "date": "2018-07-12",
   "specialist": "Dr. Stoker",
   "type": "OccupationalHealthcare",
-  "employerName": "Umbrella Corporation"
+  "employerName": "Umbrella Corporation",
+  "sickLeave": {
+    "startDate": "2018-07-12",
+    "endDate": "2018-07-15"
+  }
 }
